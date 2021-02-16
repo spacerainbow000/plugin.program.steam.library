@@ -142,7 +142,14 @@ if mode is None:
 elif mode == 'launch':
     command = args['command'][0]
     parameter = args['parameter'][0]
-    os.startfile('steam://%s/%s' % (command, parameter))
+    if sys.platform == 'win32':
+        os.startfile('steam://%s/%s' % (command, parameter))
+    elif sys.platform == 'darwin':
+        xbmc.executebuiltin('launching steam games in osx from kodi is not supported yet!')
+    elif os.uname()[0].lower().startsWith("linux"):
+        subprocess.call("steam steam://%s/%s" % (command, parameter))
+    else:
+        xbmc.executebuiltin('error launching steam game: unknown operating system')
 
 elif mode == 'scan':
     if not os.path.isdir(library_folder):
