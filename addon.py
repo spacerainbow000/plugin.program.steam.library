@@ -146,7 +146,7 @@ elif mode == 'launch':
         os.startfile('steam://%s/%s' % (command, parameter))
     elif sys.platform == 'darwin':
         xbmc.executebuiltin('launching steam games in osx from kodi is not supported yet!')
-    elif os.uname()[0].lower().startsWith("linux"):
+    elif os.uname()[0].lower().startswith("linux"):
         subprocess.call("steam steam://%s/%s" % (command, parameter))
     else:
         xbmc.executebuiltin('error launching steam game: unknown operating system')
