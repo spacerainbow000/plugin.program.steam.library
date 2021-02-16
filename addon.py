@@ -71,7 +71,7 @@ def get_installed_games(path, progress_dialog=None):
     games = []
 
     # check if the path is a steam library path ("libraryfolders.vdf" exists)
-    if os.path.isfile(path + '/steamapps/libraryfolders.vdf'):
+    if os.path.isfile(path + '/steamapps/libraryfolders.vdf') or glob.glob(path + '/steamapps/appmanifest_*.acf'):
         app_regex = re.compile('"appid"\s+"(\d+)"')
         name_regex = re.compile('"name"\s+"(.+?)"')
 
